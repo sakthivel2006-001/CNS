@@ -1,6 +1,7 @@
 ## EX. NO: 1(A) : IMPLEMENTATION OF CAESAR CIPHER
  
-
+## SAKTHIVEL S
+## 212223220090
 ## AIM:
 
 To implement the simple substitution technique named Caesar cipher using C language.
@@ -27,8 +28,61 @@ becomes C. To change a message back, each letter is replaced by the one three be
 ### STEP-5: Display the cipher text obtained above.
 
 
-PROGRAM :-
+## PROGRAM :-
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function to perform Caesar Cipher encryption
+void caesarEncrypt(char *text, int key) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        char c = text[i];
+        // Check if the character is an uppercase letter
+        if (c >= 'A' && c <= 'Z') {
+            text[i] = ((c - 'A' + key) % 26 + 26) % 26 + 'A';
+        }
+        // Check if the character is a lowercase letter
+        else if (c >= 'a' && c <= 'z') {
+            text[i] = ((c - 'a' + key) % 26 + 26) % 26 + 'a';
+        }
+        // Ignore non-alphabetic characters
+    }
+}
+
+// Function to perform Caesar Cipher decryption
+void caesarDecrypt(char *text, int key) {
+    // Decryption is the same as encryption with a negative key
+    caesarEncrypt(text, -key);
+}
+
+int main() {
+    char message[100]; // Declare a character array to store the message
+    int key;
+
+    printf("Enter the message to encrypt: ");
+    fgets(message, sizeof(message), stdin); // Read input from the user
+    printf("Enter the Caesar Cipher key (an integer): ");
+    scanf("%d", &key); // Read the key from the user
+
+    // Encrypt the message using the Caesar Cipher
+    caesarEncrypt(message, key);
+    printf("Encrypted Message: %s", message);
+
+    // Decrypt the message back to the original
+    caesarDecrypt(message, key);
+    printf("Decrypted Message: %s", message);
+    
+    return 0;
+}
+```
 
 
+## OUTPUT :-
+OUTPUT: Simulating Caesar Cipher
+![424281219-dd2eecb4-df2e-4b58-9108-8cda94b79cc2](https://github.com/user-attachments/assets/ded624ac-8cf1-4c16-aefa-f54eedd0b09b)
+Input : butterfly Encrypted Message : exwwhuiob Decrypted Message : butterfly
 
-OUTPUT :-
+## RESULT:
+The program is executed successfully
+
+
